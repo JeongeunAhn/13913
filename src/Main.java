@@ -34,7 +34,7 @@ public class Main {
 		parent=new int[100001];
 		int temp=0;
 		distance[i]=0;
-		Queue <Integer> q = new <Integer> LinkedList();
+		Queue <Integer> q = new LinkedList<>();
 		q.offer(i);
 		visit[i] = true;
 		while(!q.isEmpty()) {
@@ -70,59 +70,14 @@ public class Main {
 	}
 
 	public static void route(int k) {
-		int i=0;
 		stack = new Stack<Integer>();
-		stack.push(k);
-		if(k==n) {
-			parent[k]=n; //k=n일때 무한루프가 도는 것을 방지
-			stack.pop();
-		}else {
-			while(!(parent[k]==n)) {
-				if(parent[k]==i){			
-					stack.push(i);
-					k=i;
-					i=-1;	
-				}
-				i++;
-			}
-		}
-		stack.push(n);
+
+        while(n != k) {
+            stack.push(k);
+            k = parent[k];
+        }
+
+        stack.push(n);
+
 	}
 }
-
-//public static StringBuilder route(int k) {
-//int i=0;
-////array = new Stack<Integer>();
-////array=new ArrayList<Integer>();
-////array.push(k);
-////array.add(k);
-//StringBuilder s = new StringBuilder();
-//if(k==n) {
-//	parent[k]=n; //k=n일때 무한루프가 도는 것을 방지
-//	//array.pop();
-//	s.insert(0,n);
-//}else {
-//s.insert(0,k);
-//s.insert(0," ");
-//while(!(parent[k]==n)) {
-//	if(parent[k]==i){
-//		//array.add(i);
-//		//array.push(i);
-//		s.insert(0,i);
-//		s.insert(0," ");
-//		k=i;
-//		i=-1;	
-//	}
-//	i++;
-//}
-////array.add(n);
-////array.push(n);
-//s.insert(0,n);
-//}
-////while(!array.isEmpty()) {
-////	s.insert(array.pop()+" ");
-////}
-////System.out.println(s);
-//return s;
-//}
-//
